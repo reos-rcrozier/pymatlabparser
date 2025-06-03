@@ -85,3 +85,7 @@ second element is a tuple of children node(s) which follow the same format of AS
 
 To keep the code simple, there is no dedicated class for AST node; only these tuples
 are used.
+
+To install
+`pip install .`
+Then import as `pymatlabparser`
