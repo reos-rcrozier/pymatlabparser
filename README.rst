@@ -2,6 +2,8 @@
 pymatlabparser
 ===============
 
+Disclaimer: This is a side project of mine and has not been rigorously tested.
+
 **pymatlabparser** is a parser for Matlab/Octave language, a popular language
 in engineering and engineering education. This parser can handle many of the
 unique syntax rules of Matlab, such as:
@@ -83,3 +85,7 @@ second element is a tuple of children node(s) which follow the same format of AS
 
 To keep the code simple, there is no dedicated class for AST node; only these tuples
 are used.
+
+To install
+`pip install .`
+Then import as `pymatlabparser`
