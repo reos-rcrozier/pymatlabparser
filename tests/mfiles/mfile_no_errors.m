@@ -80,7 +80,7 @@ Dir_scripts = fullfile (Dir_parent, 'generic');
 cd(Dir_scripts)
 
 % Directory where many of JP's functions live
-Dir_Torque_Internal = fullfile (reos_shared_nextcloud_dir (), 'Projects', 'INTERNAL--torque_ctr_scig');
+Dir_Torque_Internal = fullfile(reos_shared_nextcloud_dir(), 'Projects', 'INTERNAL--torque_ctr_scig');
 addpath(Dir_Torque_Internal)
 
 % TODO: Move all above Projects Folder scripts into the Git
@@ -109,20 +109,15 @@ ss = reos.wtsim.Simulation_setup();
 p = reos.wtsim.Load_sim_parameters(ss, SELECT, simpar.windCase, Dir_rotors, File_idealised_tables, File_control_settings);
 
 % Plot pitch curve (sense check)
-figure(99)
-plot(p.pit.PitchTablePowerGrid, p.pit.PitchTableAngle_LOW(p.pit.pitch1,p.pit.pitch2,p.pit.pitch3,p.pit.pitch4,p.pit.pitch5), '-*',LineWidth=2)
-hold on
-plot(p.pit.PitchTablePowerGrid, p.pit.PitchTableAngle_UP(p.pit.pitch1,p.pit.pitch2,p.pit.pitch3,p.pit.pitch4,p.pit.pitch5), '-*',LineWidth=2)
-plot(p.pit.PitchTablePowerGrid, p.pit.PitchTableAngle(p.pit.pitch1,p.pit.pitch2,p.pit.pitch3,p.pit.pitch4,p.pit.pitch5), '-*',LineWidth=2)
-hold off
-grid on
-grid minor
-legend Low Up Combined
+figure(99);
+plot(p.pit.PitchTablePowerGrid, p.pit.PitchTableAngle_LOW(p.pit.pitch1, p.pit.pitch2, p.pit.pitch3, p.pit.pitch4, p.pit.pitch5), '-*', LineWidth=2);
+plot(p.pit.PitchTablePowerGrid, p.pit.PitchTableAngle_UP(p.pit.pitch1,p.pit.pitch2,p.pit.pitch3,p.pit.pitch4,p.pit.pitch5), '-*', LineWidth=2);
+plot(p.pit.PitchTablePowerGrid, p.pit.PitchTableAngle(p.pit.pitch1, p.pit.pitch2, p.pit.pitch3, p.pit.pitch4, p.pit.pitch5), '-*', LineWidth=2);
 
 
 %% Load SCADA
 
-simvars = reos.wtsim.Load_SCADA(Dir_Torque_Internal, simpar.windCase,  SELECT.Anenometer, p.gen.base.gearRatio, []);
+simvars = reos.wtsim.Load_SCADA(Dir_Torque_Internal, simpar.windCase, SELECT.Anenometer, p.gen.base.gearRatio, []);
 
 % figure(1)
 % plot(simvars.DateTime,simvars.U_hub,'.-')
