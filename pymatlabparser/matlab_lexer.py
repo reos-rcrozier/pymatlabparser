@@ -76,14 +76,18 @@ class MatlabLexer(sly.Lexer):
         self.index += 1
         return t
 
-    def tokenize(self, text, lineno=1, index=0):
-        return super().tokenize(text + '\n', lineno, index)
+    def tokenize(self, text, lineno=1, index=0, append_newline=False):
+        """Tokenize ``text`` and optionally append a trailing newline."""
+        if append_newline and not text.endswith('\n'):
+            text = text + '\n'
+        return super().tokenize(text, lineno, index)
 
 if __name__ == '__main__':
     lexer = MatlabLexer()
     while True:
         data = input('enter input (nothing to exit): ')
-        if data == '': break
-        tokens = [tok for tok in lexer.tokenize(data)]
+        if data == '':
+            break
+        tokens = [tok for tok in lexer.tokenize(data, append_newline=True)]
         for tok in tokens:
             print(tok)

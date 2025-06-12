@@ -22,7 +22,7 @@ class MatlabStyleChecker:
         self.lexer = MatlabLexer()
 
     def check_text(self, text: str) -> List[str]:
-        tokens = list(self.lexer.tokenize(text))
+        tokens = list(self.lexer.tokenize(text, append_newline=True))
         errors: List[str] = []
         errors += self._check_commands(tokens)
         errors += self._check_keyword_spacing(tokens, text)

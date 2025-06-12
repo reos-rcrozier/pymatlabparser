@@ -308,7 +308,7 @@ if __name__ == '__main__':
             text = input('enter input (nothing to exit): ')
             if text == '':
                 break
-            result = parser.parse(lexer.tokenize(text))
+            result = parser.parse(lexer.tokenize(text, append_newline=True))
             print(display_tree(result))
         except EOFError:
             break
